@@ -4,6 +4,9 @@
 
 namespace sim {
     struct simstring {
+        char* string_data;
+        std::size_t length;
+        
         struct iterator {
             iterator& operator++();
             iterator& operator--();
@@ -25,11 +28,11 @@ namespace sim {
             simstring&& operator*();
         };
 
-        strut find_iterator : public iterator {
+        struct find_iterator : public iterator {
             std::size_t&& operator*();
         };
 
-        simstring();
+        simstring() {}
         simstring(const char*);
         simstring(const std::string&);
         simstring(const std::string&&);
