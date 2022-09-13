@@ -1,10 +1,12 @@
+#pragma once 
+
 #include <cstdint>
 #include <string>
 #include <iostream>
 
 namespace sim {
     struct simstring {
-        char* string_data;
+        char* string_val;
         std::size_t length;
         
         struct iterator {
