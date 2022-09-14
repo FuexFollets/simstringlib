@@ -1,2 +1,3 @@
-# simstrings
-A library for efficient and simple C++ stings
+# simlib (Simple lib)
+A library for simpler and memory-efficient C++ functionality
+
