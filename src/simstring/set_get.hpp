@@ -10,3 +10,8 @@ std::size_t sim::simstring::len() const {
 std::size_t sim::simstring::size() const {
     return length;
 }
+
+sim::simstring& sim::simstring::del_string_data() {
+    string_val = realloc(string_val, 0);
+    return *this;
+}
