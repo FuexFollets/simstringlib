@@ -55,3 +55,6 @@ sim::simstring::simstring(const sim::simstring& ss_string) {
     std::memcpy(string_val, ss_string.string_val, length);
 }
 
+sim::simstring::~simstring() {
+    this -> del_string_data();
+}
