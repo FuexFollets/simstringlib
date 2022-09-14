@@ -5,37 +5,37 @@
 #include <cstdint>
 #include "prototypes.hpp"
 
-sms::simstring::simstring(const char* c_string) {
+sim::simstring::simstring(const char* c_string) {
     length = {strlen(c_string)};
-    string_val = calloc(length, sizeof(char));
+    string_val = reinterpret_cast<char*>(calloc(length, sizeof(char)));
 
     std::memcpy(string_val, c_string, length);
 }
 
-sms::simstring::simstring(const std::string&& std_string) {
+sim::simstring::simstring(const std::string&& std_string) {
     simstring(std_string.c_str());
 }
 
-sms::simstring::simstring(const std::string& std_string) {
+sim::simstring::simstring(const std::string& std_string) {
     simstring(std::move(std_string.c_str()));
 }
 
-sms::simstring::simstring(const char&& letter) {
-    string_val = calloc(char, 1);
+sim::simstring::simstring(const char&& letter) {
+    string_val = reinterpret_cast<char*>(calloc(1, sizeof(char)));
     string_val[0] = letter;
 }
 
-sms::simstring::simstring(const char& letter) {
-    simstring(static_cast<char&&>(letter));
+sim::simstring::simstring(const char& letter) {
+    simstring(static_cast<const char&&>(letter));
 }
 
-sms::simstring::simstring(const sms::simstring&& ss_string) {
+sim::simstring::simstring(const sim::simstring&& ss_string) {
     length = {ss_string.len()};
-    string_val = calloc(length, sizeof(char));
+    string_val = reinterpret_cast<char*>(calloc(length, sizeof(char)));
 
     std::memcpy(string_val, c_string, length);
 }
 
-sms::simstring::simstring(const sms::simstring& ss_string) {
-    simstring(static_cast<sms::simstring&&>(ss_string));
+sim::simstring::simstring(const sim::simstring& ss_string) {
+    simstring(std::move(ss_string));
 }

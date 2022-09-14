@@ -44,7 +44,7 @@ namespace sim {
         simstring(const simstring&);
         simstring(const simstring&&);
 
-        template <typename T_string> operator=(T_string);
+        template <typename T_string> simstring& operator=(T_string);
         template <typename T_int> char& operator[](T_int);
         template <typename T_app> simstring&& operator+(T_app);
         template <typename T_app> simstring& operator+=(T_app);
@@ -62,7 +62,6 @@ namespace sim {
         iterator begin();
         iterator end();
 
-        std::size_t len();
         std::size_t size();
 
         friend std::ostream& operator<<(std::ostream&, simstring&);
