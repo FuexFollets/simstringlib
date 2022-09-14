@@ -62,7 +62,8 @@ namespace sim {
         iterator begin();
         iterator end();
 
-        std::size_t size();
+        std::size_t size() const;
+        std::size_t len() const;
 
         friend std::ostream& operator<<(std::ostream&, simstring&);
         friend std::ostream& operator<<(std::ostream&, simstring&&);
