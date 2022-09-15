@@ -23,7 +23,7 @@ namespace sim {
             // Put exception here
         }
         
-        *this = to_eq;
+        (*this) = to_eq;
     }
 
     template <typename T_int> char& simstring::operator[] (const T_int index) {
@@ -46,6 +46,27 @@ namespace sim {
         return (*this + simstring(str));
     }
 
-    
+    template <> simstring& simstring::operator+= (simstring ss_string) {
+        string_val = realloc(string_val, length + ss_string.size());
+        std::memcpy(string_val + length, ss_string.string_val, ss_string.size());
+        return *this;
+    }
+
+    template <typename T_string> simstring& simstring::operator+= (T_string str) {
+        (*this) += simstring(str);
+        return *this;
+    }
+
+    template <> bool simstring::operator== (simstring ss_string) {
+        return (length == ss_string.size()) && (std::memcmp(string_val, ss_string.string_val, length));
+    }
+
+    template <typename T_string> bool simstring::operator== (T_string str) {
+        return (*this) == simstring(str);
+    }
+
+    template <typename T_string> bool simstring::operato!= (T_string str) {
+        return (*this) == str;
+    }
     
 }
