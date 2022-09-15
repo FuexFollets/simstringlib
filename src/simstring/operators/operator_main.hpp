@@ -5,6 +5,7 @@
 
 #include "../prototypes.hpp"
 #include "../ss_initializers.hpp"
+#include "../set_get.hpp"
 
 namespace sim {
     template <> void simstring::operator= <simstring> (const simstring ss_string) {
@@ -24,4 +25,27 @@ namespace sim {
         
         *this = to_eq;
     }
+
+    template <typename T_int> char& simstring::operator[] (const T_int index) {
+        return *(string_val + index);
+    }
+
+    template <> simstring&& simstring::operator+ <simstring> (const simstring str) {
+        char*&& new_string_ptr { ( char* ) calloc(length + str.size(), sizeof(char)) };
+        
+        std::memcpy(new_string_ptr, string_val, length);
+        std::memcpy(new_string_ptr + length, str.string_val, str.size());
+
+        this -> del_string_data();
+
+        return simstring(new_string_ptr);
+    }
+        
+        
+    template <typename T_string> simstring&& simstring::operator+ (const T_string str) {
+        return (*this + simstring(str));
+    }
+
+    
+    
 }
