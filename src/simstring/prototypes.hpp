@@ -37,11 +37,11 @@ namespace sim {
 
         struct slice_iterator : public iterator {
             simstring&& operator*();
-        }
+        };
 
         struct slice_ref_iterator : public iterator {
             simstring& operator*();
-        }
+        };
 
         simstring() {}
         simstring(const char*);
@@ -71,8 +71,8 @@ namespace sim {
         template <typename T_start, typename T_end> simstring&& sub_string(T_start, T_end);
         template <typename T_start, typename T_end> simstring& sub_string_ref(T_start, T_end);
         template <typename T_first, typename T_second> simstring& swap(T_first, T_second);
-        template <typename T_int1, T_int2, T_int3> slice_iterator slice(T_int1, T_int2, T_int3);
-        template <typename T_int1, T_int2, T_int3> slice_iterator slice_ref(T_int1, T_int2, T_int3);
+        template <typename T_int1, typename T_int2, typename T_int3> slice_iterator slice(T_int1, T_int2, T_int3);
+        template <typename T_int1, typename T_int2, typename T_int3> slice_iterator slice_ref(T_int1, T_int2, T_int3);
             
 
         iterator begin();
