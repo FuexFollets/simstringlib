@@ -57,7 +57,7 @@ namespace sim {
 
         template <typename T_string> void operator=(T_string);
         template <typename T_int> char& operator[](T_int);
-        template <typename T_app> simstring&& operator+(T_app);
+        template <typename T_app> simstring operator+(T_app);
         template <typename T_app> simstring& operator+=(T_app);
         template <typename T_string> bool operator==(T_string);
         template <typename T_string> bool operator!=(T_string);
@@ -85,5 +85,9 @@ namespace sim {
 
         friend std::ostream& operator<<(std::ostream&, simstring&);
         friend std::ostream& operator<<(std::ostream&, simstring&&);
+
+        operator char* ();
+        operator const char* ();
+        operator std::string ();
     };
 }
