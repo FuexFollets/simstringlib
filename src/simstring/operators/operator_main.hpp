@@ -27,7 +27,7 @@ namespace sim {
     }
 
 
-    template <> simstring&& simstring::operator+ <simstring> (const simstring str) {
+    template <> simstring simstring::operator+ <simstring> (const simstring str) {
         char*&& new_string_ptr { ( char* ) calloc(length + str.size(), sizeof(char)) };
         
         std::memcpy(new_string_ptr, string_val, length);
@@ -39,7 +39,7 @@ namespace sim {
     }
         
         
-    template <typename T_string> simstring&& simstring::operator+ (const T_string str) {
+    template <typename T_string> simstring simstring::operator+ (const T_string str) {
         return (*this + simstring(str));
     }
 
