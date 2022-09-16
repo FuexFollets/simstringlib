@@ -1,12 +1,12 @@
 CXX := g++
-CXXFLAGS := -O2 -Wall
+CXXFLAGS := -O2
 
 INP = simstring_tests.cpp
 OUT := ./simstring_tests.out
 
-ss_testrun: simstring_test.out
-	./simstring_test.out
+test: sstest ${OUT}
+	./${OUT}
 
-simstring_test.out: simstring_tests.cpp
+sstest: simstring_tests.cpp
 	${CXX} ${INP} ${CXXFLAGS} -o ${OUT}
 	@echo "Compilation completed"

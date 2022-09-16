@@ -8,8 +8,13 @@
 #include "operators/operator_main.hpp"
 #include "conversions.hpp"
 
-std::ostream& operator<< (std::ostream& out, sim::simstring str) {
-    out << static_cast<char*>(str);
+std::ostream& operator<< (std::ostream& out, sim::simstring& str) {
+    out << (const char*) str;
+    return out;
+}
+
+std::ostream& operator<< (std::ostream& out, sim::simstring&& str) {
+    out << (const char*) str;
     return out;
 }
 
