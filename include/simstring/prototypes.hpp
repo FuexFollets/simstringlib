@@ -1,8 +1,6 @@
 #pragma once 
 
-#include <cstdint>
-#include <string>
-#include <iostream>
+#include <bits/stdc++.h>
 
 namespace sim {
     struct simstring {
