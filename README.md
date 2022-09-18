@@ -1,4 +1,4 @@
-# SMalgolib C++ (Simple algorithm lib)
+# simstring (Simple String)
 A library for simpler and memory-efficient C++ strings. 
 
 TODO:
