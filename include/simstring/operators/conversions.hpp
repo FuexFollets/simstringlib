@@ -1,12 +1,12 @@
 #pragma once
 
-#include <cstring>
-#include <string>
+#include <bits/stdc++.h>
 
-#include "prototypes.hpp"
-#include "set_get.hpp"
-#include "ss_initializers.hpp"
-#include "operators/operator_main.hpp"
+#include "std_operators.hpp"
+
+#include "../prototypes.hpp"
+#include "../setters_getters.hpp"
+#include "../initializers.hpp"
 
 namespace sim {
 
