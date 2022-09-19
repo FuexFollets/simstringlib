@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../../src/simstring/simstring_main.hpp"
+#include "../../include/simstring.hpp"
 
 void construction_test() {
 	sim::simstring hello ("World");

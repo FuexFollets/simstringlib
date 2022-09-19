@@ -1,3 +1,3 @@
-#include "../../src/libmain.hpp"
+#include "../../include/simstring.hpp"
 
 int main() {}
