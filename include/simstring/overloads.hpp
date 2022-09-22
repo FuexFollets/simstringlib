@@ -8,8 +8,15 @@
 #include "./operators/std_operators.hpp"
 
 
+std::ostream& operator<<(std::ostream& out, sim::simstring s_string) {
+	out << (char*) s_string;
+	return out;
+}
+
+/*
 std::ostream& operator<<(std::ostream& out, sim::simstring str) {
 	out << (const char *) str;
 	return out;
 }
-
+*/
+// std::ostream& operator<<(std::ostream& out, sim::)
