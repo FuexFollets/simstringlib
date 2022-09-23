@@ -72,8 +72,6 @@ namespace sim {
 
         simstring& del_string_data();
 
-		// friend std::ostream& operator<<(std::ostream&, simstring);
-
         operator char* ();
         operator const char* ();
         operator std::string ();

@@ -24,7 +24,7 @@ namespace sim {
     }
 
     template <> simstring simstring::operator+ <simstring> (const simstring str) {
-        char*&& new_string_ptr { ( char* ) calloc(length + str.size(), sizeof(char)) };
+        char*&& new_string_ptr {( char* ) calloc(length + str.size(), sizeof(char))};
         
         std::memcpy(new_string_ptr, string_val, length);
         std::memcpy(new_string_ptr + length, str.string_val, str.size());
@@ -50,7 +50,9 @@ namespace sim {
     }
 
     template <> bool simstring::operator== (simstring ss_string) {
-        return (length == ss_string.size()) && (std::memcmp(string_val, ss_string.string_val, length));
+        return 
+			(length == ss_string.size()) &&
+			(!std::memcmp(string_val, ss_string.string_val, length));
     }
 
     template <typename T_string> bool simstring::operator== (T_string str) {
