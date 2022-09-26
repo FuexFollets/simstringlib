@@ -2,15 +2,9 @@
 
 #include "../../include/simstring.hpp"
 
-/*
-std::ostream& operator<<(std::ostream& out, sim::simstring s_string) {
-	out << (char*) s_string;
-	return out;
-}
-*/
 
 void construction_test() {
-	std::cout << "Construction Test\n";
+	std::cout << " -- Construction Test\n";
 	sim::simstring hello ("World");
 
 	std::cout << hello.length << '\n'
@@ -20,7 +14,7 @@ void construction_test() {
 }
 
 void addition_test() {
-	std::cout << "Addition Test\n";
+	std::cout << " -- Addition Test\n";
 	sim::simstring a("abc");
 	sim::simstring b("123");
 
@@ -30,17 +24,21 @@ void addition_test() {
 
 
 void assignment_test() {
-	std::cout << "Assignment Test\n";
+	std::cout << " -- Assignment Test\n";
 	sim::simstring s1("hello");
+	sim::simstring s2("hello");
     s1 = sim::simstring("hi");
+    s2 = "hi";
+
 	// s1 = "hi";
-	std::cout << (char*) s1;
+	std::cout << s1 << '\n' 
+              << s2;
 	std::cout << '\n';
 }
 
 
 void comparison_test() {
-	std::cout << "Comparison Test\n";
+	std::cout << " -- Comparison Test\n";
 	sim::simstring a("a1");
 	sim::simstring b("a2");
 	sim::simstring c("a3");

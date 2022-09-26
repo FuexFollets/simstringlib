@@ -43,8 +43,7 @@ namespace sim {
 
         ~simstring();
 
-        template <typename T_string> void operator=(T_string);
-        template <typename T_string> void operator=(T_string&);
+        template <typename T_string> void operator=(T_string&&);
         template <typename T_int> char& operator[](T_int);
         template <typename T_app> simstring operator+(T_app);
         template <typename T_app> simstring& operator+=(T_app);
