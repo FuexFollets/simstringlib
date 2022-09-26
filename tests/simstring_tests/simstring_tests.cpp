@@ -28,15 +28,16 @@ void addition_test() {
 	std::cout << '\n';
 }
 
-/*
+
 void assignment_test() {
 	std::cout << "Assignment Test\n";
 	sim::simstring s1("hello");
-	s1 = "hi";
+    s1 = sim::simstring("hi");
+	// s1 = "hi";
 	std::cout << (char*) s1;
 	std::cout << '\n';
 }
-*/
+
 
 void comparison_test() {
 	std::cout << "Comparison Test\n";
@@ -61,4 +62,5 @@ int main() {
 	addition_test();
 	comparison_test();
 	output_test();
+    assignment_test();
 }

@@ -8,10 +8,7 @@
 
 
 namespace sim {
-    template <typename T_string> void simstring::operator= (T_string str) {
-        simstring to_eq{simstring(str)};
-        (*this) = to_eq;
-    }
+    template <typename T_string> void simstring::operator= (T_string str) { (*this) = simstring(str); }
 
     template <> void simstring::operator= <simstring> (simstring ss_string) {
         length = ss_string.size();
@@ -19,9 +16,7 @@ namespace sim {
         std::memcpy(string_val, ss_string.string_val, length);
     }
 
-    template <typename T_int> char& simstring::operator[] (const T_int index) {
-        return *(string_val + index);
-    }
+    template <typename T_int> char& simstring::operator[] (const T_int index) { return *(string_val + index); }
 
     template <> simstring simstring::operator+ <simstring> (const simstring str) {
         char*&& new_string_ptr {( char* ) calloc(length + str.size(), sizeof(char))};
@@ -34,9 +29,7 @@ namespace sim {
         return simstring(new_string_ptr);
     }
         
-    template <typename T_string> simstring simstring::operator+ (const T_string str) {
-        return (*this + simstring(str));
-    }
+    template <typename T_string> simstring simstring::operator+ (const T_string str) { return (*this + simstring(str)); }
 
     template <> simstring& simstring::operator+= (simstring ss_string) {
         string_val = ( char* ) realloc(string_val, length + ss_string.size());
@@ -55,11 +48,7 @@ namespace sim {
 			(!std::memcmp(string_val, ss_string.string_val, length));
     }
 
-    template <typename T_string> bool simstring::operator== (T_string str) {
-        return (*this) == simstring(str);
-    }
+    template <typename T_string> bool simstring::operator== (T_string str) { return (*this) == simstring(str); }
 
-    template <typename T_string> bool simstring::operator!= (T_string str) {
-        return (*this) == str;
-    }
+    template <typename T_string> bool simstring::operator!= (T_string str) { return (*this) == str; }
 }
