@@ -8,26 +8,26 @@
 
 
 namespace sim {
-	simstring::iterator(const char* c_ptr) : pos_ptr{c_ptr} {}
+	simstring::iterator::iterator(char* pos_ptr) : c_ptr{pos_ptr} {}
 
 	simstring::iterator simstring::iterator::operator++() {
-		return iterator{c_ptr++};
+		return simstring::iterator{c_ptr++};
 	}
 
 	simstring::iterator simstring::iterator::operator--() {
-		return iterator{c_ptr--};
+		return simstring::iterator{c_ptr--};
 	}
 
 	char simstring::iterator::operator*() {
-		return *c_ptr;
+		return (*c_ptr);
 	}
 
-	template <typename T_int> simstring::iterator::operator+(T_int int_val) {
-		return iterator{c_ptr + int_val};
+	template <typename T_int> simstring::iterator simstring::iterator::operator+(T_int int_val) {
+		return simstring::iterator{c_ptr + int_val};
 	}
 
-	template <typename T_int> simstring::iterator::operator-(T_int int_val) {
-		return iterator{c_ptr - int_val};
+	template <typename T_int> simstring::iterator simstring::iterator::operator-(T_int int_val) {
+		return simstring::iterator{c_ptr - int_val};
 	}
 
 	bool simstring::iterator::operator==(simstring::iterator ss_itr) {
