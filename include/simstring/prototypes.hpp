@@ -11,25 +11,44 @@ namespace sim {
         char* string_val;
         std::size_t length;
         
-        struct iterator {
-            iterator& operator++();
-            iterator& operator--();
+        struct iterator_base {
+            iterator operator++();
+            iterator operator--();
 
-            char& operator*();
+            char operator*();
 
             template <typename T_int> iterator operator+(T_int);
             template <typename T_int> iterator operator-(T_int);
 
-            bool&& operator==(iterator);
-            bool&& operator!=(iterator);
+            bool operator==(iterator);
+            bool operator!=(iterator);
         };
 
+		struct iterator : public iterator_impl {
+			iterator(const char*);
+		};
 
-        struct split_ref_iterator : public iterator { simstring& operator*(); };
-        struct split_iterator : public iterator { simstring&& operator*(); };
-        struct find_iterator : public iterator { std::size_t&& operator*(); };
-        struct slice_iterator : public iterator { simstring&& operator*(); };
-        struct slice_ref_iterator : public iterator { simstring& operator*(); };
+        struct split_ref_iterator : public iterator {
+			char* pos_ptr;
+			simstring& operator*();
+		};
+
+        struct split_iterator : public iterator {
+			simstring&& operator*();
+		};
+
+        struct find_iterator : public iterator {
+			std::size_t&& operator*();
+		};
+
+        struct slice_iterator : public iterator {
+			simstring&& operator*();
+		};
+
+        struct slice_ref_iterator : public iterator {
+			simstring& operator*();
+		};
+
 
         simstring() {}
         simstring(const char*);
