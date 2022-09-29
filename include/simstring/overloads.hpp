@@ -7,6 +7,8 @@
 #include "./operators/conversions.hpp"
 #include "./operators/std_operators.hpp"
 
+#include "./iterators/char_iterator.hpp"
+
 
 std::ostream& operator<<(std::ostream& out, sim::simstring s_string) {
 	out << (char*) s_string;

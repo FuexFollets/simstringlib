@@ -8,6 +8,14 @@
 
 
 namespace sim {
+	simstring::iterator simstring::begin() {
+		return iterator{string_val};
+	}
+
+	simstring::iterator simstring::end() {
+		return iterator{string_val + length};
+	}
+
 	simstring::iterator::iterator(char* pos_ptr) : c_ptr{pos_ptr} {}
 
 	simstring::iterator simstring::iterator::operator++() {

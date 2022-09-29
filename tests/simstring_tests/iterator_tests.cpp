@@ -5,9 +5,12 @@
 void char_iterator_test() {
 	std::cout << " -- Char Iterator Test\n";
 	sim::simstring str("Hello");
+
 	for (const auto& letter: str) {
 		std::cout << ' ' << letter;
 	}
+
+	std::cout << str;
 
 	std::cout << "\n\n";
 }
