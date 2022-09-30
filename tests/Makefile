@@ -19,3 +19,4 @@ test: sstest ${OUT}
 sstest: simstring_tests.cpp
 	${CXX} ${INP} ${CXXFLAGS} -o ${OUT}
 	@echo "Compilation completed"
+
