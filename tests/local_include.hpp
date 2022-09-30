@@ -2,4 +2,4 @@
 
 #include <bits/stdc++.h>
 
-#include "../../include/simstring.hpp"
+#include "../include/simstring.hpp"

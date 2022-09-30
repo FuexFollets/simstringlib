@@ -1,22 +1,48 @@
 CXX := g++
 CXXFLAGS := -O2
 
-INP := simstring_tests.cpp
-OUT := ./simstring_tests.out
+define compile_testname
+	${CXX} $1_tests.cpp ${CXXFLAGS} -o ./dist/$1_test
+endef
 
-ITR_INP := iterator_tests.cpp
-ITR_OUT := ./iterator_tests.out
+define run_testname
+	@echo "./dist/$1_test" && echo ""
+	@./dist/$1_test
+endef
 
-itr_test: itr_compile
-	./${ITR_OUT}
+TESTNAMES := construction iterator operator misc
+LIBFILES := $(ls ../include/**/*)
 
-itr_compile: ${ITR_INP}
-	${CXX} ${ITR_INP} ${CXXFLAGS} -o ${ITR_OUT}
 
-test: sstest ${OUT}
-	./${OUT}
+all: $(foreach T,$(TESTNAMES),dist/$T_test)
+	
+	
 
-sstest: simstring_tests.cpp
-	${CXX} ${INP} ${CXXFLAGS} -o ${OUT}
-	@echo "Compilation completed"
+construction_test: ./dist/construction_test
+	$(call run_testname,construction)
+	
 
+./dist/construction_test: construction_tests.cpp ${LIBFILES}
+	echo $(LIBFILES)
+	$(call compile_testname,construction)
+
+
+operator_test: ./dist/operator_test
+	$(call run_testname,operator)
+
+./dist/operator_test: operator_tests.cpp
+	$(call compile_testname,operator)
+
+
+iterator_test: ./dist/iterator_test
+	$(call run_testname,iterator)
+
+./dist/iterator_test: iterator_tests.cpp
+	$(call compile_testname,iterator)
+
+
+misc_test: ./dist/misc_test
+	$(call run_testname,misc)
+
+./dist/misc_test: misc_tests.cpp
+	$(call compile_testname,misc)
