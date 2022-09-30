@@ -1,6 +1,5 @@
-#include <bits/stdc++.h>
+#include "local_include.hpp"
 
-#include "../../include/simstring.hpp"
 
 void char_iterator_test() {
 	std::cout << " -- Char Iterator Test\n";
