@@ -16,7 +16,6 @@ OUTFILES := $(wildcard ./dist/*)
 
 
 all: $(foreach T,$(TESTNAMES),./dist/$T_test)
-	$(foreach F,${OUTFILES},./dist/$F_test)
 	
 
 construction_test: ./dist/construction_test
@@ -24,7 +23,6 @@ construction_test: ./dist/construction_test
 	
 
 ./dist/construction_test: construction_tests.cpp ${LIBFILES}
-	echo $(LIBFILES)
 	$(call compile_testname,construction)
 
 

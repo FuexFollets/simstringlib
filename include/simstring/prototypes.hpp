@@ -3,24 +3,7 @@
 #include <bits/stdc++.h>
 
 namespace sim {
-	struct simstring_impl {
-        template <typename T_string> void operator=(T_string&&);
-        template <typename T_int> char& operator[](T_int);
-        template <typename T_app> simstring operator+(T_app);
-        template <typename T_app> simstring& operator+=(T_app);
-        template <typename T_string> bool operator==(T_string);
-        template <typename T_string> bool operator!=(T_string);
-
-        std::size_t size() const;
-        std::size_t len() const;
-
-        operator char* ();
-        operator const char* ();
-        operator std::string ();
-	};
-
-
-    struct simstring : simstring_impl {
+    struct simstring {
         /*
          * Stored values
         */
@@ -80,6 +63,12 @@ namespace sim {
 
         ~simstring();
 
+        template <typename T_string> void operator=(T_string&&);
+        template <typename T_int> char& operator[](T_int);
+        template <typename T_app> simstring operator+(T_app);
+        template <typename T_app> simstring& operator+=(T_app);
+        template <typename T_string> bool operator==(T_string);
+        template <typename T_string> bool operator!=(T_string);
 /*
         template <typename T_split> iterator split(T_split);
         template <typename T_split> iterator split_include(T_split);
@@ -98,16 +87,35 @@ namespace sim {
         iterator end();
 
         simstring& del_string_data();
+
+        std::size_t size() const;
+        std::size_t len() const;
+
+        operator char* ();
+        operator const char* ();
+        operator std::string ();
     };
 
 
-	template <typename T_str> struct substring_operator : simstring_impl {
+	template <typename T_str> struct substring_operator {
 		T_str* base_string;
 		std::size_t substr_index_start;
 		std::size_t substr_index_end;
 
 		substring_operator(T_str);
 
-			
+        template <typename T_string> void operator=(T_string&&);
+        template <typename T_int> char& operator[](T_int);
+        template <typename T_app> simstring operator+(T_app);
+        template <typename T_app> simstring& operator+=(T_app);
+        template <typename T_string> bool operator==(T_string);
+        template <typename T_string> bool operator!=(T_string);
+
+        std::size_t size() const;
+        std::size_t len() const;
+
+        operator char* ();
+        operator const char* ();
+        operator std::string ();
 	};
 }
