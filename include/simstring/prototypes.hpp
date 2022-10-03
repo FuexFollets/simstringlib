@@ -3,7 +3,24 @@
 #include <bits/stdc++.h>
 
 namespace sim {
-    struct simstring {
+	struct simstring_impl {
+        template <typename T_string> void operator=(T_string&&);
+        template <typename T_int> char& operator[](T_int);
+        template <typename T_app> simstring operator+(T_app);
+        template <typename T_app> simstring& operator+=(T_app);
+        template <typename T_string> bool operator==(T_string);
+        template <typename T_string> bool operator!=(T_string);
+
+        std::size_t size() const;
+        std::size_t len() const;
+
+        operator char* ();
+        operator const char* ();
+        operator std::string ();
+	};
+
+
+    struct simstring : simstring_impl {
         /*
          * Stored values
         */
@@ -63,12 +80,6 @@ namespace sim {
 
         ~simstring();
 
-        template <typename T_string> void operator=(T_string&&);
-        template <typename T_int> char& operator[](T_int);
-        template <typename T_app> simstring operator+(T_app);
-        template <typename T_app> simstring& operator+=(T_app);
-        template <typename T_string> bool operator==(T_string);
-        template <typename T_string> bool operator!=(T_string);
 /*
         template <typename T_split> iterator split(T_split);
         template <typename T_split> iterator split_include(T_split);
@@ -82,18 +93,21 @@ namespace sim {
         template <typename T_int1, typename T_int2, typename T_int3> slice_iterator slice(T_int1, T_int2, T_int3);
         template <typename T_int1, typename T_int2, typename T_int3> slice_iterator slice_ref(T_int1, T_int2, T_int3);
 */
-
-
+ 
         iterator begin();
         iterator end();
 
-        std::size_t size() const;
-        std::size_t len() const;
-
         simstring& del_string_data();
-
-        operator char* ();
-        operator const char* ();
-        operator std::string ();
     };
+
+
+	template <typename T_str> struct substring_operator : simstring_impl {
+		T_str* base_string;
+		std::size_t substr_index_start;
+		std::size_t substr_index_end;
+
+		substring_operator(T_str);
+
+			
+	};
 }
