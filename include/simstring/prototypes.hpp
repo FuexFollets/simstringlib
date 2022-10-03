@@ -102,7 +102,7 @@ namespace sim {
 		std::size_t substr_index_start;
 		std::size_t substr_index_end;
 
-		substring_operator(T_str);
+		substring_operator(T_str*, std::size_t, std::size_t);
 
         template <typename T_string> void operator=(T_string&&);
         template <typename T_int> char& operator[](T_int);
