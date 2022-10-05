@@ -69,20 +69,9 @@ namespace sim {
         template <typename T_app> simstring& operator+=(T_app);
         template <typename T_string> bool operator==(T_string);
         template <typename T_string> bool operator!=(T_string);
-/*
-        template <typename T_split> iterator split(T_split);
-        template <typename T_split> iterator split_include(T_split);
-        template <typename T_split> iterator split_ref(T_split);
-        template <typename T_split> iterator split_ref_include(T_split);
-        template <typename T_find> std::size_t find(T_find);
-        template <typename T_find> find_iterator find_all(T_find);
-        template <typename T_start, typename T_end> simstring&& sub_string(T_start, T_end);
-        template <typename T_start, typename T_end> simstring& sub_string_ref(T_start, T_end);
-        template <typename T_first, typename T_second> simstring& swap(T_first, T_second);
-        template <typename T_int1, typename T_int2, typename T_int3> slice_iterator slice(T_int1, T_int2, T_int3);
-        template <typename T_int1, typename T_int2, typename T_int3> slice_iterator slice_ref(T_int1, T_int2, T_int3);
-*/
- 
+
+		template <typename T_string> simstring& replace_substring(const std::size_t, const std::size_t, const T_string);
+
         iterator begin();
         iterator end();
 
