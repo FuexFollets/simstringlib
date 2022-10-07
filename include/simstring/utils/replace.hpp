@@ -28,4 +28,11 @@ namespace sim {
         length = new_size;
 		return *this;
 	}
+
+	template <typename T_string> simstring& simstring::replace_substring
+	(const std::size_t start,
+	 const std::size_t end,
+	 T_string str) {
+		return this -> replace_substring<simstring>(simstring(str));
+	}
 }
