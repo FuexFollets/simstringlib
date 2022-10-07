@@ -64,6 +64,19 @@ sim::substring_operator::substring_operator
 	(simstring& str_ptr, std::size_t start, std::size_t end)
 		: base_string{&str_ptr}, substr_index_start{start}, substr_index_end{end} {}
 
+sim::simstring::simstring(const simstring& str, std::size_t start, std::size_t end = 0) {
+	simstring new_simtstring;
+	std::size_t new_length {(end == 0) ? start : (end - start)};
+	std::size_t start_index {start * (end == 0)};
+
+	new_simstring
+		.set_length(new_length)
+		.set_string_val(reinterpret_cast<char*>(calloc(new_length, sizeof(char))));
+
+	std::memcpy(new_simstring.string_val, str.string_val + start_index, new_length);
+	
+	return new_simstring;
+}
 
 
 sim::simstring::~simstring() {
