@@ -61,11 +61,7 @@ namespace sim {
         simstring(const simstring&);
         simstring(const simstring&&);
 
-        simstring(const simstring&, std::size_t);
-        simstring(const simstring&&, std::size_t);
-
         simstring(const simstring&, std::size_t, std::size_t);
-        simstring(const simstring&&, std::size_t, std::size_t);
 
         ~simstring();
 
@@ -89,6 +85,12 @@ namespace sim {
         operator char* ();
         operator const char* ();
         operator std::string ();
+
+		simstring& set_size(const std::size_t);
+		simstring& set_string_val(char*);
+		
+
+		template <typename T_string> static simstring substring(T_string, std::size_t, std::size_t);
     };
 
 
@@ -110,7 +112,7 @@ namespace sim {
         std::size_t size() const;
         std::size_t len() const;
 
-		simstring to_simstring();
+		simstring as_simstring();
 
         operator char* ();
         operator const char* ();
