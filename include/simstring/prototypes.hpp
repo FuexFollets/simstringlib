@@ -61,6 +61,12 @@ namespace sim {
         simstring(const simstring&);
         simstring(const simstring&&);
 
+        simstring(const simstring&, std::size_t);
+        simstring(const simstring&&, std::size_t);
+
+        simstring(const simstring&, std::size_t, std::size_t);
+        simstring(const simstring&&, std::size_t, std::size_t);
+
         ~simstring();
 
         template <typename T_string> void operator=(T_string&&);
@@ -86,12 +92,13 @@ namespace sim {
     };
 
 
-	template <typename T_str> struct substring_operator {
-		T_str* base_string;
+	struct substring_operator {
+		simstring* base_string;
 		std::size_t substr_index_start;
 		std::size_t substr_index_end;
 
-		substring_operator(T_str*, std::size_t, std::size_t);
+		substring_operator(simstring*, std::size_t, std::size_t);
+		substring_operator(simstring&, std::size_t, std::size_t);
 
         template <typename T_string> void operator=(T_string&&);
         template <typename T_int> char& operator[](T_int);
@@ -103,8 +110,11 @@ namespace sim {
         std::size_t size() const;
         std::size_t len() const;
 
+		simstring to_simstring();
+
         operator char* ();
         operator const char* ();
         operator std::string ();
+		operator simstring ();
 	};
 }
