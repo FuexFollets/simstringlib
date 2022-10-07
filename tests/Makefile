@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -O2
+CXXFLAGS := -O2 -Wno-stringop-overflow
 
 define compile_testname
 	${CXX} $1_tests.cpp ${CXXFLAGS} -o ./dist/$1_test
@@ -29,19 +29,19 @@ construction_test: ./dist/construction_test
 operator_test: ./dist/operator_test
 	$(call run_testname,operator)
 
-./dist/operator_test: operator_tests.cpp
+./dist/operator_test: operator_tests.cpp ${LIBFILES}
 	$(call compile_testname,operator)
 
 
 iterator_test: ./dist/iterator_test
 	$(call run_testname,iterator)
 
-./dist/iterator_test: iterator_tests.cpp
+./dist/iterator_test: iterator_tests.cpp ${LIBFILES}
 	$(call compile_testname,iterator)
 
 
 misc_test: ./dist/misc_test
 	$(call run_testname,misc)
 
-./dist/misc_test: misc_tests.cpp
+./dist/misc_test: misc_tests.cpp ${LIBFILES}
 	$(call compile_testname,misc)
