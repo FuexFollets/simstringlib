@@ -56,11 +56,15 @@ sim::simstring::simstring(const sim::simstring& ss_string) {
     std::memcpy(string_val, ss_string.string_val, length);
 }
 
-template <> sim::substring_operator::substring_operator <simstring> (simstring* str_ptr, std::size_t start, std::size_t end)
+sim::substring_operator::substring_operator
+	(simstring* str_ptr, std::size_t start, std::size_t end)
 		: base_string{str_ptr}, substr_index_start{start}, substr_index_end{end} {}
 
-template <> sim::substring_operator::substring_operator <char*> (char** cstr_ptr, std::size_t start, std::size_t end)
-		: base_string{cstr_ptr}, substr_index_start{start}. substr_index_end{end} {}
+sim::substring_operator::substring_operator
+	(simstring& str_ptr, std::size_t start, std::size_t end)
+		: base_string{&str_ptr}, substr_index_start{start}, substr_index_end{end} {}
+
+
 
 sim::simstring::~simstring() {
     this -> del_string_data();
