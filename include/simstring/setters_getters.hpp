@@ -18,6 +18,16 @@ std::size_t sim::simstring::size() const {
 }
 
 sim::simstring& sim::simstring::del_string_data() {
-    string_val = ( char* ) realloc(string_val, 0);
+    string_val = reinterpret_cast<char*>(realloc(string_val, 0));
     return *this;
+}
+
+sim::simstring& sim::simstring::set_size(const std::size_t new_size) {
+	length = new_size;
+	return *this;
+}
+
+sim::simtstring& sim::simstring::set_string_val(char* new_str) {
+	string_val = new_str;
+	return *this;
 }
