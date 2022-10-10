@@ -27,7 +27,7 @@ sim::simstring& sim::simstring::set_size(const std::size_t new_size) {
 	return *this;
 }
 
-sim::simtstring& sim::simstring::set_string_val(char* new_str) {
+sim::simstring& sim::simstring::set_string_val(char* new_str) {
 	string_val = new_str;
 	return *this;
 }
