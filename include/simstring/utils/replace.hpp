@@ -33,6 +33,6 @@ namespace sim {
 	(const std::size_t start,
 	 const std::size_t end,
 	 T_string str) {
-		return this -> replace_substring<simstring>(simstring(str));
+		return this -> replace_substring<simstring>(start, end, simstring(str));
 	}
 }
