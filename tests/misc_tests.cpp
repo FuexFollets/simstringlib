@@ -1,12 +1,5 @@
 #include "local_include.hpp"
 
-
-void output_test() {
-    std::cout << " -- Output test\n";
-	sim::simstring ss("Hello ");
-	std::cout << ss << sim::simstring("world") << '\n';
-}
-
 void replace_test() {
     std::cout << "\n -- Replace test\n";
     sim::simstring hi("abcdefg");
@@ -17,6 +10,5 @@ void replace_test() {
 }
 
 int main() {
-	output_test();
     replace_test();
 }
