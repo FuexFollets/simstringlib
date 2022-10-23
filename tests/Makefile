@@ -3,9 +3,8 @@ CXXFLAGS := -O2 -Wno-stringop-overflow
 
 LIBFILES := $(wildcard ../include/**/*)
 
-%_test: ./$@_tests.cpp
-	./dist/$@
+%_tests: ./dist/%_tests.out
+	./dist/$@.out
 
-%: $(LIBFILES)
-	$(CXX) $@ $(CXXFLAGS) -o ./dist/$@_test
-
+./dist/%.out: $(LIBFILES) %.cpp
+	$(CXX) $*.cpp $(CXXFLAGS) -o $@
