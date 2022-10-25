@@ -89,8 +89,7 @@ namespace sim {
 		simstring& set_size(const std::size_t);
 		simstring& set_string_val(char*);
 		
-
-		template <typename T_string> static simstring substring(T_string, std::size_t, std::size_t);
+		// template <typename T_string> static simstring substring(T_string, std::size_t, std::size_t);
     };
 
 
@@ -102,7 +101,7 @@ namespace sim {
 		substring_operator(simstring*, std::size_t, std::size_t);
 		substring_operator(simstring&, std::size_t, std::size_t);
 
-        template <typename T_string> void operator=(T_string&&);
+        template <typename T_string> substring_operator& operator=(T_string&&);
         template <typename T_int> char& operator[](T_int);
         template <typename T_app> simstring operator+(T_app);
         template <typename T_app> simstring& operator+=(T_app);

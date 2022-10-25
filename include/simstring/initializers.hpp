@@ -67,11 +67,9 @@ simstring::simstring(const simstring& ss_string) {
     std::memcpy(string_val, ss_string.string_val, length);
 }
 
-substring_operator::substring_operator(simstring* str_ptr, std::size_t start, std::size_t end)
-    : base_string{str_ptr}, substr_index_start{start}, substr_index_end{end} {}
-
 substring_operator::substring_operator(simstring& str_ptr, std::size_t start, std::size_t end)
-    : base_string{&str_ptr}, substr_index_start{start}, substr_index_end{end} {}
+    : base_string {&str_ptr}, substr_index_start {start}, substr_index_end {end} {}
+
 
 simstring::simstring(const simstring& str, std::size_t start, std::size_t end = 0) {
 	std::size_t new_length {(end == 0) ? start : (end - start)};

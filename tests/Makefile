@@ -1,4 +1,4 @@
-CXX := g++
+CXX := clang++ # g++
 CXXFLAGS := -O2 -Wno-stringop-overflow
 
 LIBFILES := $(wildcard ../include/**/*)
