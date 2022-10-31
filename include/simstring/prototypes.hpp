@@ -77,8 +77,6 @@ namespace sim {
         iterator begin();
         iterator end();
 
-        simstring& del_string_data();
-
         std::size_t size() const;
         std::size_t len() const;
 
@@ -86,8 +84,12 @@ namespace sim {
         operator const char* ();
         operator std::string ();
 
+        // Private
+
 		simstring& set_size(const std::size_t);
 		simstring& set_string_val(char*);
+        simstring& replace_substring_with_simstring(const std::size_t, const std::size_t, const simstring&);
+        simstring& del_string_data();
 		
 		// template <typename T_string> static simstring substring(T_string, std::size_t, std::size_t);
     };
