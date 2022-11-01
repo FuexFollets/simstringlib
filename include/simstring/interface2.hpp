@@ -26,9 +26,14 @@ struct simstring {
 	std::size_t size() const;
 	std::size_t len() const;
 
-	operator char* ();
-	operator const char* ();
-	operator std::string ();
+	template <typename S> simstring& operator=(const S&);
+	template <typename Ti> char& operator[](const Ti);
+	template <template S> simstring operator+(const S&) const;
+	template <template S> simstring& operator+=(const S&);
+
+	explicit operator char* () const;
+	explicit operator const char* () const;
+	explicit operator std::string () const;
 
 		private:
 
@@ -43,7 +48,7 @@ struct simstring {
 		iterator operator++();
 		iterator operator--();
 
-		char operator* ();
+		char& operator* ();
 	};
 };
 
@@ -82,6 +87,14 @@ template <typename T> simstring::iterator operator-(const simstring::iterator&, 
 template <typename T> simstring::iterator operator-(const T&, const simstring::iterator&);
 
 
+// Simstring
+template <typename S> bool operator==(const simstring&, const S&);
+template <typename S> bool operator==(const S&, const simstring&);
+
+template <typename S> bool operator!=(const simstring&, const S&);
+template <typename S> bool operator!=(const S&, const simstring&);
+
+template <typename S> S operator+(const S&, const simstring&);
 
 
 
